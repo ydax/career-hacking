@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////// Eazl Career Hacking™ App ///////////////////////////////////////////
+////////////////////////// Eazl Career Hacking™ Hub ///////////////////////////////////////////
 ////////////////////////// Enroll in the class: ///////////////////////////////////////////////
 ////////////////////////// On Eazl https://courses.eazl.co/p/career-hacking ///////////////////
 ////////////////////////// On Udemy https://www.udemy.com/course/golden-gate-bridge/ //////////
@@ -18,6 +18,8 @@ function onOpen(e) {
   ui.createMenu("🔍 Career Hacking™")
   .addItem("🔔 Activate Follow-up Helper", "activate")
   .addItem("📧 Set Email Address", "setEmailAddress")
+  .addSeparator()
+  .addItem("⚙️ Setup Instructions", "initiateSetupModal")
   .addToUi();
 }
 
@@ -100,6 +102,18 @@ function sendUpdateEmail () {
 }
 
 ///////////////////////////////////////////////////////////////////////
+////////////////////////// LAUNCH SETUP MODAL /////////////////////////
+///////////////////////////////////////////////////////////////////////
+
+function initiateRepeatOrdererModal() {
+  var html = HtmlService.createHtmlOutputFromFile('setupGuide')
+    .setWidth(350)
+    .setHeight(105);
+  SpreadsheetApp.getUi() 
+    .showModalDialog(html, '⚙️ Getting setup guide...');
+};
+
+///////////////////////////////////////////////////////////////////////
 ////////////////////////////// UTILITIES //////////////////////////////
 ///////////////////////////////////////////////////////////////////////
 
@@ -165,3 +179,18 @@ function getMyEmail () {
   var myEmail = scriptProps.getProperty('userEmail');
   return myEmail;
 }
+
+
+// Copyright 2020 Meg Media Inc. All Rights Reserved.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
